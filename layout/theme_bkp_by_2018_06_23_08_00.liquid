@@ -1,0 +1,419 @@
+<!doctype html>
+
+<!--[if IE 9 ]><html class="no-js csscalc no-flexbox ie9"><![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--><html class="no-js"><!--<![endif]-->
+  <head>
+    
+{% include 'limespot' %}
+    <meta charset="utf-8"> 
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, user-scalable=0">
+    
+    
+    
+    <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-PZQLK2F');</script>
+<!-- End Google Tag Manager -->
+    
+    <meta name="google-site-verification" content="Ep36cy8C8Z_Soqmqv69eqLb25UPP6nsuZwvigGilCCU" /> 
+<meta name="google-site-verification" content="4F7nqqvLzBsVTfjdpupHGSdUrXSlhYIDuTX7HegFS4U" />
+    <meta name="google-site-verification" content="iRDS97DmxAV-FJLE_W5Q82v4vYH-a4beCnvGDBNF8k8" />
+    <!-- Start Alexa Certify Javascript -->
+<script type="text/javascript">
+_atrk_opts = { atrk_acct:"mO7bl1asWhy3mh", domain:"bohme.com",dynamic: true};
+(function() { var as = document.createElement('script'); as.type = 'text/javascript'; as.async = true; as.src = "https://d31qbv1cthcecs.cloudfront.net/atrk.js"; var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(as, s); })();
+</script>
+<noscript><img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=mO7bl1asWhy3mh" style="display:none" height="1" width="1" alt="" /></noscript>
+<!-- End Alexa Certify Javascript -->  
+    <title>
+      {{ page_title }}{% if current_tags %}{% assign meta_tags = current_tags | join: ', ' %} &ndash; {{ 'general.meta.tags' | t: tags: meta_tags }}{% endif %}{% if current_page != 1 %} &ndash; {{ 'general.meta.page' | t: page: current_page }}{% endif %}{% unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless %}
+    </title>
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
+    <link rel="canonical" href="{{ canonical_url }}">
+
+    {% comment %} We preconnect of two popular domains (Shopify CDN and Google Font) to speed up performance {% endcomment %}
+    <link rel="preconnect" href="//cdn.shopify.com" crossorigin>
+    <link rel="preconnect" href="//fonts.gstatic.com" crossorigin>
+
+    {% if settings.favicon %}
+      <link rel="shortcut icon" href="{% assign myImg = settings.favicon | img_url: '32x32' %}{% include 'get-image' img:myImg %}" type="image/png">
+    {% endif %}
+
+    {% include 'social_meta_tags' %}
+    {% include 'google_fonts' %}
+
+    {{ content_for_header }}
+
+  {{ 'beans.css' | asset_url | stylesheet_tag }}
+
+  <script>window.beans_cjs_id = '{{ customer.id }}'; window.beans_cjs_email = '{{ customer.email }}';</script> 
+
+
+    {{ 'theme.scss.css' | asset_url | stylesheet_tag }}
+
+    <script>
+      // This allows to expose several variables to the global scope, to be used in scripts
+      window.shop = {
+        template: {{ template | json }},
+        currentPage: {{ current_page }},
+        shopCurrency: {{ shop.currency | json }},
+        moneyFormat: {{ shop.money_format | json }},
+        moneyWithCurrencyFormat: {{ shop.money_with_currency_format | json }},
+        collectionSortBy: {{ collection.sort_by | default: collection.default_sort_by | json }}
+      };
+
+      window.languages = {
+        autocompleteStartingAt: {{ 'search.autocomplete.starting_at' | t | json }},
+        autocompletePageType: {{ 'search.autocomplete.page_type' | t | json }},
+        autocompleteSeeAll: {{ 'search.autocomplete.see_all' | t | json }},
+        recoverPassword: {{ 'customer.recover.title' | t | json }},
+        cartTerms: {{ 'cart.general.need_accept_terms' | t | json }},
+        cartEstimatedShipping: {{ 'cart.general.estimated_taxes' | t | json }},
+        shippingEstimatorSubmit: {{ 'cart.shipping_estimator.submit' | t | json }},
+        shippingEstimatorSubmitting: {{ 'cart.shipping_estimator.submitting' | t | json }},
+        shippingEstimatorNoRates: {{ 'cart.shipping_estimator.no_rates' | t | json }},
+        shippingEstimatorRates: {{ 'cart.shipping_estimator.rates' | t | json }},
+        shippingEstimatorError: {{ 'cart.shipping_estimator.error' | t | json }},
+        productAddedStatus: {{ 'product.form.added_status' | t | json }},
+        unavailableLabel: {{ 'product.labels.unavailable' | t | json }},
+        soldOutLabel: {{ 'product.labels.sold_out' | t | json }},
+        addToCartLabel: {{ 'product.form.add_to_cart' | t | json }},
+        addingToCartLabel: {{ 'product.form.adding_to_cart' | t | json }}
+      }
+    </script>
+      <!-- Start Alexa Certify Javascript -->
+<script type="text/javascript">
+_atrk_opts = { atrk_acct:"mO7bl1asWhy3mh", domain:"bohme.com",dynamic: true};
+(function() { var as = document.createElement('script'); as.type = 'text/javascript'; as.async = true; as.src = "https://d31qbv1cthcecs.cloudfront.net/atrk.js"; var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(as, s); })();
+</script>
+<noscript><img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=mO7bl1asWhy3mh" style="display:none" height="1" width="1" alt="" /></noscript>
+<!-- End Alexa Certify Javascript -->  
+  
+<!-- Start Visual Website Optimizer Asynchronous Code -->
+<script type='text/javascript'>
+var _vwo_code=(function(){
+var account_id=299109,
+settings_tolerance=2000,
+library_tolerance=2500,
+use_existing_jquery=false,
+/* DO NOT EDIT BELOW THIS LINE */
+f=false,d=document;return{use_existing_jquery:function(){return use_existing_jquery;},library_tolerance:function(){return library_tolerance;},finish:function(){if(!f){f=true;var a=d.getElementById('_vis_opt_path_hides');if(a)a.parentNode.removeChild(a);}},finished:function(){return f;},load:function(a){var b=d.createElement('script');b.src=a;b.type='text/javascript';b.innerText;b.onerror=function(){_vwo_code.finish();};d.getElementsByTagName('head')[0].appendChild(b);},init:function(){settings_timer=setTimeout('_vwo_code.finish()',settings_tolerance);var a=d.createElement('style'),b='body{opacity:0 !important;filter:alpha(opacity=0) !important;background:none !important;}',h=d.getElementsByTagName('head')[0];a.setAttribute('id','_vis_opt_path_hides');a.setAttribute('type','text/css');if(a.styleSheet)a.styleSheet.cssText=b;else a.appendChild(d.createTextNode(b));h.appendChild(a);this.load('//dev.visualwebsiteoptimizer.com/j.php?a='+account_id+'&u='+encodeURIComponent(d.URL)+'&r='+Math.random());return settings_timer;}};}());_vwo_settings_timer=_vwo_code.init();
+</script>
+<!-- End Visual Website Optimizer Asynchronous Code -->
+  
+  
+{% include "livechat_monitoring_code" %}
+    
+    
+    
+    <!-- RetentionScience start -->
+<script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+    
+<script type="text/javascript">
+  var _rsq = _rsq || [];
+  _rsq.push(['_setSiteId', '532']); // replace site_id with your static Site ID
+  _rsq.push(['_enableOnsite']);
+
+  {% if customer %}
+    _rsq.push(['_setUserId', '{{ customer.id }}']);
+    _rsq.push(['_setUserEmail', '{{ customer.email }}']);
+  {% endif %}
+
+  /*** EVENT SPECIFIC CODE ***/
+  {% if template == 'product' and product %}
+    _rsq.push(['_addItem', { 'id':'{{ product.id }}' }]);
+  {% endif %}
+
+  {% if template == 'cart' %}
+    {% for item in cart.items %}
+      _rsq.push(['_addItem', { 'id':'{{ item.id }}', 'name':'{{ item.title }}', 'price':'{{ item.price | money_without_currency }}' }]);
+    {% endfor %}
+    _rsq.push(['_setAction', 'shopping_cart']);
+  {% endif %}
+
+  {% if template == 'search' and search.performed %}
+      _rsq.push(['_setAction', 'search']) ;
+       _rsq.push(['_setParams', { 'term': '{{ search.terms }}'}]);
+  {% endif %}
+
+  _rsq.push(['_track']);
+  /*** END EVENT SPECIFIC CODE ***/
+
+  /*** FUNCTION FOR AJAX TRACKING ***/
+  var _rs_ajax = {};
+  _rs_ajax.updateCart = function() {
+    jQuery.getJSON('/cart.js', function (cart, textStatus) {
+      for(var i = 0; i < cart.items.length; i++) {
+        var cartItem = cart.items[i];
+        var price = cartItem.price / 100;
+
+        _rsq.push(['_addItem', { 'id':cartItem.id.toString(), 'name':cartItem.title.toString(),'price':price.toFixed(2).toString() }]);
+      }
+      _rsq.push(['_setAction', 'shopping_cart']);
+      _rsq.push(['_track']);
+    });
+  };
+  /*** END FUNCTION FOR AJAX TRACKING ***/
+  
+  /*** FUNCTION FOR EMAIL CAPTURING ***/
+  jQuery(document).ready(function($) {
+    $("#email-form").on("submit", function(){
+        var uEmail = $('.email-input ')[0].value;
+       _rsq.push(['_setUserEmail', uEmail]);
+       _rsq.push(['_setUserProperties', { 'record_id':'{{ uEmail | downcase | md5 }}','email':uEmail,'registration_source':'footer'}]);
+       _rsq.push(['_setAction', 'email_entered']);
+       _rsq.push(['_track']);
+     });
+                  
+     /*** FUNCTION FOR CARTING ***/
+      jQuery('.product__add-to-cart').on('click', function() {
+        _rs_ajax.updateCart();
+      });
+      /*** END FUNCTION FOR CARTING ***/
+                  
+  });
+  /*** END FUNCTION FOR EMAIL CAPTURING ***/
+
+  (function() {
+     var rScix = document.createElement('script');
+     rScix.type = 'text/javascript';
+     rScix.async = true;
+     rScix.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'd1stxfv94hrhia.cloudfront.net/waves/v2/w.js';
+     (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(rScix);
+  })();
+</script>
+<!-- RetentionScience end -->
+    
+    
+    
+ <script type="text/javascript" src="//cdn.nextopia.net/nxt-app/aeaa06af9f8f46576d889984889c3af3.js" async></script>
+
+    
+</head>
+
+  {% assign template_handle = template | replace: '.', ' ' | truncatewords: 1, '' | handle %}
+
+  <body itemscope itemtype="//schema.org/WebPage" class="focal focal--v5 template-{{ template_handle }} {% if page.template_suffix != blank %}template-{{ template_handle }}-{{page.template_suffix}}{% endif %}">
+    {% include 'svg_icons' %}
+
+    <div class="page__overlay"></div>
+
+    <div class="page__container">
+      {% comment %}
+      Implementation note: unfortunately, variables like push_header are not available within the scope of a section. As a consequence, we need to have some
+      code outside the section to emit the push header
+      {% endcomment %}
+
+      <header id="header" class="header {% if push_header != blank %}header--pushed{% endif %}" role="banner">
+        <script>
+          window.doHeaderInit = function(background) {
+            if (background) {
+              document.getElementById('header').setAttribute('style', 'background-image: url(' + background + ')');
+            } else {
+              document.getElementById('header').removeAttribute('style');
+            }
+          };
+        </script>
+
+        {% section 'header' %}
+
+        {% if push_header != blank %}
+          {{ push_header }}
+        {% endif %}
+      </header>
+
+      <main id="main" class="main" role="main">
+        {{ content_for_layout }}
+<limespot></limespot>
+      </main>
+
+      {% section 'footer' %}
+    </div>
+
+    {% include 'popup' %}
+    {% include 'mega_search' %}
+
+    <script>
+      window.doPostSectionsInit = function() {
+        // In the new editor, there is no way to know which section is enabled or not. However, in Focal, if the slideshow is immediately followed by the
+        // featured images module, some special styles need to be applied. So, for now, we address that in JavaScript
+        (function() {
+          var elements = document.getElementsByClassName('shopify-section__featured-images');
+
+          for (var i = 0 ; i != elements.length ; ++i) {
+            var previousSibling = elements[i].previousSibling;
+
+            if (previousSibling && (' ' + previousSibling.className + ' ').indexOf(' shopify-section__slideshow ') > -1) {
+              previousSibling.className = previousSibling.className.concat(' shopify-section__slideshow--pull');
+            }
+          }
+        }());
+
+        // Similarily, we have some styles to apply on the header if and only if it is followed by the slideshow
+        {% if template == 'index' %}
+          (function() {
+            var elements = document.getElementsByClassName('slideshow--collapsed'),
+              hasFoundMatchingBlock = false;
+
+            for (var i = 0 ; i != elements.length ; ++i) {
+              var parentNode = elements[i].parentNode;
+
+              if (null === parentNode.previousSibling || parentNode.previousSibling.nodeType !== 8) {
+                continue; // It's not the very first node
+              }
+
+              // If we're here, we have a slideshow that is the first node, so we add a specific class to the header
+              hasFoundMatchingBlock = true;
+            }
+
+            var header = document.getElementById('header');
+
+            if (hasFoundMatchingBlock) {
+              if ((' ' + header.className + ' ').indexOf(' header--absolute ') === -1) {
+                header.className = header.className.concat(' header--absolute');
+              }
+            } else {
+              header.className = header.className.replace(' header--absolute', '');
+            }
+          }());
+        {% endif %}
+
+        // Finally, we need to add the header background if any
+        {% if template != 'index' %}
+          (function() {
+            var header = document.querySelector('#shopify-section-header .header__wrapper');
+
+            if (header.hasAttribute('data-background-image')) {
+              document.getElementById('header').setAttribute('style', 'background-image: url(' + header.getAttribute('data-background-image') + ')')
+            } else {
+              document.getElementById('header').removeAttribute('style');
+            }
+          }());
+        {% endif %}
+      };
+
+      window.doPostSectionsInit();
+    </script>
+
+    {{ '//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js' | script_tag }}
+    {{ 'modernizr.min.js' | asset_url | script_tag }}
+
+    {% if settings.currency_conversion_enabled %}
+      {{ '//cdn.shopify.com/s/javascripts/currencies.js' | script_tag }}
+    {% endif %}
+
+    {% if template contains 'customers' %}
+      {{ 'shopify_common.js' | shopify_asset_url | script_tag }}
+      {{ 'customer_area.js'  | shopify_asset_url | script_tag }}
+    {% endif %}
+
+    {% if template contains 'cart' %}
+      {{ 'shopify_common.js' | shopify_asset_url | script_tag }}
+    {% endif %}
+
+    {{ 'option_selection.js' | shopify_asset_url | script_tag }}
+
+    {{ '//cdn.polyfill.io/v2/polyfill.min.js?features=String.prototype.trim,Element.prototype.placeholder,Object.keys,Array.prototype.map,Array.prototype.forEach' | script_tag }}
+    {{ 'libs.js' | asset_url | script_tag }}
+    {{ 'script.js' | asset_url | script_tag }}
+  
+{% include 'special-offers' %}
+{% include 'collection-filter-v2' %}
+    
+    
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PZQLK2F"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+    
+    
+    <!-- google dynamic remarketing tag for theme.liquid -->
+    {% if template contains 'product' %}
+        <script type="text/javascript">
+            var json_product = {{ product | json }};
+        </script>
+        <script>
+            var ecomm_prodid=[];
+            for(var i=0;i<json_product.variants.length;i++)
+                ecomm_prodid.push(json_product.variants[i].sku);
+        </script>
+        <script type="text/javascript">
+            var google_tag_params = {
+                ecomm_prodid: ecomm_prodid,
+                ecomm_pagetype: 'product',
+                ecomm_totalvalue: parseFloat('{{ product.price | money_without_currency | remove: ","}}')
+            };
+        </script>
+    {% elsif template contains 'collection' %}
+        <script type="text/javascript">
+            var google_tag_params = {
+                ecomm_pagetype: 'category'
+            };
+        </script>
+    {% elsif template contains 'cart' %}
+        <script type="text/javascript">
+        var id = new Array();
+        {% for item in cart.items %}
+        id.push('{{item.variant.sku}}');
+        {% endfor %}
+        
+            var google_tag_params = {
+                ecomm_prodid: id,
+                ecomm_pagetype: 'cart',
+                ecomm_totalvalue: parseFloat('{{ cart.total_price | money_without_currency | remove: ","}}')
+            };
+        </script>
+    {% elsif template contains 'search' %}
+        <script type="text/javascript">
+            var google_tag_params = {
+                ecomm_pagetype: 'searchresults'
+        };
+        </script>
+    {% elsif template contains 'index' %}
+        <script type="text/javascript">
+            var google_tag_params = {
+                ecomm_pagetype: 'home'
+            };
+        </script>
+    {% else %}
+        <script type="text/javascript">
+            var google_tag_params = {
+                ecomm_pagetype: 'other'
+            };
+        </script>
+    {% endif %}
+ <!-- Google Code for Remarketing Tag -->
+<script type="text/javascript">
+/* <![CDATA[ */
+var google_conversion_id = 869705916;
+var google_custom_params = window.google_tag_params;
+var google_remarketing_only = true;
+/* ]]> */
+</script>
+<script type="text/javascript" src="//www.googleadservices.com/pagead/conversion.js">
+</script>
+<noscript>
+<div style="display:inline;">
+<img height="1" width="1" style="border-style:none;" alt="" src="//googleads.g.doubleclick.net/pagead/viewthroughconversion/869705916/?value=0&amp;guid=ON&amp;script=0"/>
+</div>
+</noscript>
+
+
+     <!-- end google dynamic remarketing tag for theme.liquid -->
+    
+    
+    
+{% include 'back-in-stock-helper' %}
+</body>
+</html>

@@ -1,0 +1,1 @@
+{% if img %}{{ img | remove: 'https:' | remove: 'http:' | replace:'//cdn.shopify.com/s/files/1/1514/6262/','//bohme.com/a/cdn/' | split:'?' | first  }}{% endif %}
